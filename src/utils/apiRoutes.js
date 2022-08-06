@@ -1,0 +1,24 @@
+const baseUrl = 'https://trellbackend.herokuapp.com'
+
+export const uploadAvatarRoute = `${baseUrl}/api/user/avatar/upload`
+export const registerUserRoute = `${baseUrl}/api/user/register`
+export const loginUserRoute = `${baseUrl}/api/user/login`
+export const getMeRoute = `${baseUrl}/api/user/me`
+export const searchUsersForChat = `${baseUrl}/api/user/find`
+export const createSingleChat = `${baseUrl}/api/chat/single/access`
+export const fetchAllChats = `${baseUrl}/api/chat/findall`
+export const createGroupChat = `${baseUrl}/api/chat/group/create`
+export const updateGroupImage = `${baseUrl}/api/chat/group/image/upload`
+export const renameGroup = `${baseUrl}/api/chat/group/rename`
+export const removeSelfFromGroup = `${baseUrl}/api/chat/group/remove`
+export const exitAndDeleteGroup = `${baseUrl}/api/chat/group/delete`
+export const addUsersToGroup = `${baseUrl}/api/chat/group/add`
+export const updateUserName = `${baseUrl}/api/user/update/profile`
+export const updatePassword = `${baseUrl}/api/user/update/password`
+export const removeAvatar = `${baseUrl}/api/user/avatar/remove`
+export const sendMessageRoute = `${baseUrl}/api/chat/message/send`
+export const fetchAllMessagesRoute = `${baseUrl}/api/chat/message`
+export const addUnreadMessagesRoute = `${baseUrl}/api/chat/unread/add`
+export const removeUnreadMessagesRoute = `${baseUrl}/api/chat/unread/remove`
+export const loadGroupNotificationsRoute = `${baseUrl}/api/user/group/notifications`
+export const deleteMessage = `${baseUrl}/api/chat/message/deletemessage`

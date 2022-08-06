@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trell Messenger</title>
+
+    <style type="text/css">
+      body {
+        height: 100vh;
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      h3.logoname {
+        font-size: 4rem;
+        font-weight: 600;
+        font-style: italic;
+        color: #b033ea;
+      }
+
+      p.message {
+        color: gray;
+        font-weight: 500;
+        font-size: 1rem;
+        letter-spacing: 0.1rem;
+        margin-bottom: 2rem;
+      }
+
+      button.btn {
+        padding: 10px 15px;
+        outline: none;
+        border: 1px solid white;
+        border-radius: 8px;
+        background-color: #b033ea;
+        color: white;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      button.btn:hover {
+        background-color: #c97bed;
+      }
+
+      @media only screen and (max-width: 425px) {
+        h3.logoname {
+          font-size: 3rem;
+          margin-top: -25px;
+        }
+        p.message {
+          font-size: 0.7rem;
+          margin: 30px 15px;
+        }
+        button.btn {
+          font-size: 12px;
+          outline: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h3 class="logoname">trell</h3>
+    <div class="imagediv">
+      <img src="/assets/internet.jpeg" alt="internet" height="250" width="300"  />
+      
+    </div>
+    <p class="message">
+      Looks like you are not connected to the internet. Check your internet
+      connection and
+    </p>
+    <button class="btn" id="btn" onclick="{reloadPage}">Try again</button>
+    <script>
+      const btn = document.getElementById("btn");
+      btn.addEventListener("click", () => {
+        location.reload();
+      });
+    </script>
+  </body>
+</html>

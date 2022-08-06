@@ -1,0 +1,21 @@
+.background{
+    background: url('../../public/assets/chatbackground2.jpg');
+    background-position: center  ;
+    background-size: 70% ;
+    object-fit: cover;
+    z-index: 10;
+    opacity: .07;
+    background-repeat: repeat-x repeat-y;
+   
+}
+.background_mobile{
+    background: url('../../public/assets/chatbackground2.jpg');
+    background-position: center  ;
+    background-size: 80% ;
+    object-fit: cover;
+    z-index: 10;
+    opacity: .07;
+    background-repeat: repeat-x repeat-y;
+   
+}
+
