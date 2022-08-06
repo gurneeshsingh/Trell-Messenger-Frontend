@@ -1,7 +1,7 @@
 // define a cache name and urlstoload , cache name defined the cachse storage of the browser
 
 const CACHE_NAME = 'trell_storage_1';
-const urlsToCache = ['/', '/index.html', '/offline.html', '/assets/internet.jpeg', '/assets/robot.gif', '/assets/loginimage.svg', '/assets/hellocat.svg', '/assets/groupadd.svg', '/assets/groupsettings.svg', '/assests/trell.jpeg', '/Chats.js', '/assets/chatbackground2.jpg', '/assets/empty.svg'];
+const urlsToCache = ['/', '/index.html', '/offline.html', '/assets/internet.jpeg', '/assets/robot.gif', '/assets/loginimage.svg', '/assets/hellocat.svg', '/assets/groupadd.svg', '/assets/groupsettings.svg', '/assets/trell.jpeg', '/assets/chatbackground2.jpg', '/assets/empty.svg'];
 
 const self = this;
 
