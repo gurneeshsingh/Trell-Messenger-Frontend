@@ -151,7 +151,7 @@ const Chats = () => {
         </> :
           <div className='w-full h-screen flex md:!hidden flex-col'>
             <ChatBoxTopHeader activeChat={activeChat} fetchMessages={fetchAllMessages} fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} singlechatMobileView={singlechatMobileView} setSinglechatMobileView={setSinglechatMobileView} />
-            <div className={`flex md:hidden flex-col h-[80vh] w-full  ${styles.background_mobile} overflow-y-hidden `}>
+            <div className={`flex md:hidden flex-col h-[82vh] w-full  ${styles.background_mobile} overflow-y-hidden `}>
             </div>
             <ChatBox token={token} chats={chats} activechat={activeChat} fetchMessages={fetchAllMessages} allMessages={allMessages} loading={loading} errorMessage={errorMessage} setError={setErrorMessage} setMessages={setAllMessages} socketConnected={socketConnected} fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
           </div>}

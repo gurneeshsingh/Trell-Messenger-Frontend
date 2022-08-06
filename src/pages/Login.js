@@ -34,7 +34,10 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate('/chats')
+      setTimeout(() => {
+        navigate('/chats')
+
+      }, 1500);
     }
   }, [token])
 

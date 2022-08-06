@@ -157,7 +157,7 @@ const ChatBox = ({ token, activechat, fetchMessages, allMessages, loading, error
                    
                 </div>
                 {/* message sending textfield  */}
-                {activechat?.users?.find((auser) => auser._id === user?._id) ? <div className='md:hidden w-full h-[9vh] mx-auto  bg-white p-2 drop-shadow-md border-t-[1.5px]  border-purple-700  absolute bottom-2 z-40 flex items-center'>
+                {activechat?.users?.find((auser) => auser._id === user?._id) ? <div className='md:hidden w-full h-[10vh] mx-auto  bg-white p-2 drop-shadow-md border-t-[1.5px]  border-purple-700  absolute bottom-2 z-40 flex items-center'>
                     
                     <input id='message' autoComplete='off' name='message' value={message} placeholder="Message.." onChange={typingHandler} className="py-2.5 ml-4 px-3 w-[80%] text-sm font-nunito  outline-none border border-slate-300 flex-1 " onKeyDown={sendMessage} />
                     <IconButton sx={{ marginLeft: "14px", marginRight: "5px" }} size="medium" onClick={sendMessageOnClick} disabled={message?.length === 0} ><SendIcon color={message?.length === 0 ? 'disabled' : 'secondary'} fontSize="1.2rem" /></IconButton>
