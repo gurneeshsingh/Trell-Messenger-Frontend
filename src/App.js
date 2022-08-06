@@ -7,7 +7,6 @@ import ChooseAvatar from './pages/ChooseAvatar';
 import LoginChangeAvatar from './pages/LoginChangeAvatar'
 import Chats from "./pages/Chats";
 import {  useDispatch } from "react-redux"
-import { reset } from './redux/features/userSlice';
 import { useEffect} from 'react';
 import { getMe } from './redux/features/userSlice';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -21,16 +20,14 @@ function App() {
   
 
   useEffect(() => {
-    async function callGetme() {
-
-      await dispatch(getMe(token))
-      dispatch(reset())
-
+    function callGetme() {
+       dispatch(getMe(token))
+      
     }
     token && callGetme()
 
 
-  }, [token])
+  }, [])
 
   
 
@@ -46,9 +43,7 @@ function App() {
       <Route path='/loginchangeavatar' element={<ProtectedRoute auth={token}>
         <LoginChangeAvatar />
       </ProtectedRoute>} />
-      <Route path='/chats' element={<ProtectedRoute auth={token}>
-        <Chats />
-      </ProtectedRoute>} />
+      <Route path='/chats' element={token ? <Chats/> : <Login/> } />
 
     </Routes>
   );
