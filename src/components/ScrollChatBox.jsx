@@ -117,7 +117,7 @@ const ScrollChatBox = ({ messages, activechat, typing }) => {
             </ScrollableFeed>
 
             {/* for mobile screen  */}
-            <ScrollableFeed className='md:!hidden  !h-full !w-full !scrollbar-none !transition-all !mt-2' ref={scrollRef2} onScroll={(isAtBottom2) => setIsAtBottom2(isAtBottom2)} >
+            <ScrollableFeed className='md:!hidden  !h-full !w-full !scrollbar-none !transition-all !mt-1' ref={scrollRef2} onScroll={(isAtBottom2) => setIsAtBottom2(isAtBottom2)} >
 
                 {/* // scroll to bottom button  */}
                 {!isAtBottom2 && <div className='absolute bottom-5 right-10 z-[100] bg-gray-100 shadow-md transition-all rounded-full'>
@@ -152,7 +152,7 @@ const ScrollChatBox = ({ messages, activechat, typing }) => {
                     </div>
 
                 ))}
-                {(typing && !activechat?.isGroupChat) && <div className='w-16 h-20 md:!w-20 md:!h-28'>
+                {(typing && !activechat?.isGroupChat) && <div className='w-20 h-20 md:!w-20 md:!h-28'>
                     <Lottie style={{ marginBottom: 5, height: "100%", width: "100%" }} loop={true} autoPlay={true} animationData={animationData} rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }} />
                 </div>
                 }

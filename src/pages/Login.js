@@ -26,20 +26,15 @@ const Login = () => {
 
   const { isLoading, isError, message } = useSelector((state) => state.user);
 
-  const token = JSON.parse(localStorage.getItem('token'));
+ 
 
   useEffect(() => {
-    dispatch(reset())
+    setTimeout(() => {
+      dispatch(reset())
+    }, 5000);
   }, [dispatch])
 
-  useEffect(() => {
-    if (token) {
-      setTimeout(() => {
-        navigate('/chats')
-
-      }, 1500);
-    }
-  }, [token])
+  
 
 
   function handleChange(e) {
@@ -50,7 +45,7 @@ const Login = () => {
     setFormData({ ...formData, showPassword: !formData.showPassword })
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!formData.email || !formData.password) {
       window.alert('Enter Credentials Properly')
@@ -60,8 +55,9 @@ const Login = () => {
       email: formData.email,
       password: formData.password
     }
-    dispatch(loginUser(userData))
+    await dispatch(loginUser(userData))
     setFormData({ email: "", password: "", showPassword: false })
+    window.location.replace('/chats')
 
   }
 

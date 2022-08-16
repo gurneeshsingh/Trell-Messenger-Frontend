@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { callRegisterUserApi, callLoginUserApi, callUploadAvatarApi, callGetMeApi, callUpdateUsernameApi, callUpdatePasswordApi, callremoveProfilePictureApi, callLoadGroupNotificationsApi } from "./userThunkApiCalls";
-
+import { socket } from "../../App";
 
 
 
@@ -114,7 +114,8 @@ export const userSlice = createSlice({
         isError: false,
         isSuccess: false,
         isLoading: false,
-        message: ""
+        message: "",
+        socketConnected: false
     },
     reducers: {
         // create a reset reducer that will reset all state data except user to default 
@@ -130,6 +131,7 @@ export const userSlice = createSlice({
         logoutUser: (state) => {
             localStorage.removeItem('token')
             state.user = null
+            state.socketConnected =false
         }
     },
     extraReducers: {
@@ -140,6 +142,10 @@ export const userSlice = createSlice({
             state.isLoading = false
             state.isSuccess = true
             state.user = action.payload
+            if (state.user != null) {
+                socket.emit('usersetup', state.user?._id)
+                state.socketConnected = true
+            }
         },
         [registerUser.rejected]: (state, action) => {
             state.isLoading = false
@@ -154,6 +160,10 @@ export const userSlice = createSlice({
             state.isLoading = false
             state.isSuccess = true
             state.user = action.payload
+            if (state.user != null) {
+                socket.emit('usersetup', state.user?._id)
+                state.socketConnected = true
+            }
         },
         [loginUser.rejected]: (state, action) => {
             state.isLoading = false
@@ -181,6 +191,10 @@ export const userSlice = createSlice({
             state.isLoading = false
             state.isSuccess = true
             state.user = action.payload
+            if (state.user != null) {
+                socket.emit('usersetup', state.user?._id)
+                state.socketConnected = true
+            }
         },
         [getMe.rejected]: (state, action) => {
             state.isLoading = false

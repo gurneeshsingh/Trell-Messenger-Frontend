@@ -8,17 +8,14 @@ import SideBarBig from '../components/SideBarBig';
 import styles from "../components/ChatBox.module.css"
 import { fetchAllChats, addToUnreadMessages } from '../redux/features/chatSlice';
 import { getGroupNotifications } from "../redux/features/userSlice";
-import { getMe } from '../redux/features/userSlice';
 import ChatBox from '../components/ChatBox';
 import { fetchAllMessagesRoute } from '../utils/apiRoutes';
 import axios from "axios"
-import io from "socket.io-client";
 import ProfileMobile from './ProfileMobile';
 import SettingsMobile from './SettingsMobile';
+import { socket } from '../App';
 
 
-const ENDPOINT = 'https://trellbackend.herokuapp.com';
-export const socket = io.connect(ENDPOINT)
 export let activeChatCompare;
 let inChatAudio = new Audio('/assets/inchat.mp3');
 let outChatAudio = new Audio('/assets/outchat.mp3');
@@ -34,26 +31,12 @@ const Chats = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("")
   const [fetchAgain, setFetchAgain] = useState(false)
-  const [socketConnected, setSocketConnected] = useState(false);
   const [singlechatMobileView, setSinglechatMobileView] = useState(false);
   const [navigationValue, setNavigationValue] = useState(1);
 
 
 
-  useEffect(() => {
-    let isSubscribed = true;
-    // from this socket  we can perfomr various function like emit , brodcast etc
-    // emit is used to send data we will emit the user object so that the backend can take the id of the user from it 
-    if (isSubscribed) {
-      socket.emit('usersetup', user)
-      socket.on('connected', () => setSocketConnected(true))
-    }
-    token && dispatch(getMe(token))
-    return () => {
-      setSocketConnected(false)
-      isSubscribed = false
-    }
-  }, []);
+
 
 
   useEffect(() => {
@@ -117,7 +100,7 @@ const Chats = () => {
         outChatAudio.play()
       }
     })
-  }, [])
+  })
 
   if (navigationValue === 0) {
     return <ProfileMobile navigationValue={ navigationValue} setNavigationValue={setNavigationValue} />
@@ -138,7 +121,7 @@ const Chats = () => {
             {/* main chat content box  */}
             <div className={`hidden md:!flex md:flex-col md:h-full md:w-full ${styles.background} md:overflow-y-hidden  `}>
             </div>
-            <ChatBox token={token} chats={chats} activechat={activeChat} fetchMessages={fetchAllMessages} allMessages={allMessages} loading={loading} errorMessage={errorMessage} setError={setErrorMessage} setMessages={setAllMessages} socketConnected={socketConnected} fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+            <ChatBox token={token} chats={chats} activechat={activeChat} fetchMessages={fetchAllMessages} allMessages={allMessages} loading={loading} errorMessage={errorMessage} setError={setErrorMessage} setMessages={setAllMessages} socketConnected={user?.socketConnected} fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
           </div>
         }
       </div>
@@ -153,7 +136,7 @@ const Chats = () => {
             <ChatBoxTopHeader activeChat={activeChat} fetchMessages={fetchAllMessages} fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} singlechatMobileView={singlechatMobileView} setSinglechatMobileView={setSinglechatMobileView} />
             <div className={`flex md:hidden flex-col h-[82vh] w-full  ${styles.background_mobile} overflow-y-hidden `}>
             </div>
-            <ChatBox token={token} chats={chats} activechat={activeChat} fetchMessages={fetchAllMessages} allMessages={allMessages} loading={loading} errorMessage={errorMessage} setError={setErrorMessage} setMessages={setAllMessages} socketConnected={socketConnected} fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+            <ChatBox token={token} chats={chats} activechat={activeChat} fetchMessages={fetchAllMessages} allMessages={allMessages} loading={loading} errorMessage={errorMessage} setError={setErrorMessage} setMessages={setAllMessages} socketConnected={user?.socketConnected} fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
           </div>}
       </div>
 

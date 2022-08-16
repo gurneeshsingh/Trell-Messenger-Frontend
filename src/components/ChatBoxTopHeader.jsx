@@ -99,8 +99,8 @@ const ChatBoxTopHeader = ({ activeChat, fetchMessages, fetchAgain, setFetchAgain
             </div>
 
             {/* // for mobile screen */}
-            <div className='flex md:!hidden w-full !h-[10.7vh] !z-[100] bg-white'>
-                <AppBar position='static' color='inherit' sx={{ boxShadow: "none", width: "100%", zIndex:100 }}>
+            <div className='flex md:!hidden w-full !z-[100] bg-white'>
+                <AppBar position='static' color='inherit' sx={{ boxShadow: "none", width: "100%" }}>
                     <Toolbar sx={{ borderBottom: "1px solid rgb(209 213 219)", display: "flex", alignItems: "center", marginTop: "15px", paddingBottom: "10px" }}>
                         <IconButton size='medium' color='secondary' sx={{ marginRight: "14px" }} onClick={goBackToChats}>
                             <ArrowBackIosIcon fontSize='1rem' color='secondary' />
