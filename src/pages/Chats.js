@@ -36,9 +36,6 @@ const Chats = () => {
 
 
 
-
-
-
   useEffect(() => {
     activeChatCompare = activeChat
   }, [activeChat])

@@ -10,7 +10,7 @@ import ScrollChatBox from './ScrollChatBox';
 import Picker from 'emoji-picker-react';
 import { useSelector } from 'react-redux';
 import { ImSad2 } from "react-icons/im"
-import { socket } from "../pages/Chats";
+import { socket } from "../App";
 import { activeChatCompare } from '../pages/Chats';
 
 
